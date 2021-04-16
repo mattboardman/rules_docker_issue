@@ -1,0 +1,3 @@
+cat <<EOF
+TLD $TLD
+EOF

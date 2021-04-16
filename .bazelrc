@@ -1,0 +1,1 @@
+run --worker_sandboxing --workspace_status_command="bash ./workspace_config.sh" --define=TLD="$${TLD}"

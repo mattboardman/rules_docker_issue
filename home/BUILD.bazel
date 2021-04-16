@@ -1,0 +1,31 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+load("@io_bazel_rules_docker//nodejs:image.bzl", "nodejs_image")
+
+nodejs_binary(
+    name = "bin",
+    data = glob(["src/*.js"]),
+    entry_point = ":src/index.js",
+    env = {
+        "TLD": "$TLD",
+    },
+)
+
+nodejs_image(
+    name = "image_bound",
+    data = glob(["src/*.js"]),
+    entry_point = ":src/index.js",
+    env = {
+        "TLD": "$(TLD)",
+    },
+)
+
+nodejs_image(
+    name = "image_unbound",
+    data = glob(["src/*.js"]),
+    entry_point = ":src/index.js",
+    env = {
+        "TLD": "$TLD",
+    },
+)
